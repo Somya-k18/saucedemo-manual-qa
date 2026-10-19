@@ -4,15 +4,15 @@
 
 **Project:** SauceDemo Manual QA Testing
 
-**Testing Phase:** Phase 1 — Functional Testing
+**Testing Phases Covered:** Phase 1 — Functional Testing; Phase 2 — Cross-Browser Testing; Phase 3 — Exploratory Testing
 
-**Report Scope:** Phase 1 functional testing and Phase 2 cross-browser testing. Phase-specific results are documented separately below.
+**Report Scope:** Phase 1 functional testing, Phase 2 cross-browser testing, and Phase 3 exploratory testing. Phase-specific results are documented separately below.
 
 **Application:** SauceDemo Web Application
 
 **Test Type:** Manual Testing
 
-**Execution Status:** Phases 1 and 2 completed; Phases 3 and 4 pending
+**Execution Status:** Phases 1, 2 and 3 completed; Phase 4 pending
 
 **Total Test Cases Executed:** 39 (Phase 1 functional suite)
 
@@ -87,19 +87,21 @@ The Dynamic Catalog Lazy Load section continuously generated duplicate product e
 
 ## 6. Defects Identified
 
-| Defect ID | Related Test Case | Module | Severity | Priority | Status |
+| Defect ID | Related Test / Check | Module | Severity | Priority | Status |
 |---|---|---|---|---|---|
 | BUG-001 | TC-NAV-005 | Navigation & Session | Medium | Medium | Open |
 | BUG-002 | TC-DYN-003 | Dynamic Catalog | Medium | Medium | Open |
 | BUG-003 | TC-NAV-006 | Navigation & Session | Medium | Medium | Open |
+| BUG-004 | Exploratory Checks 4 and 6 | Checkout | Medium | Medium | Open |
 
 ## 7. Evidence
 
-Evidence captured during Phase 1 execution is stored in the following repository directories:
+Evidence captured during testing is stored in the following repository directories:
 
 - `Evidence/BUG-001/`
 - `Evidence/BUG-002/`
 - `Evidence/BUG-003/`
+- `Evidence/BUG-004/`
 
 The corresponding defect reports contain the filenames and descriptions of the supporting screenshots.
 
@@ -126,12 +128,12 @@ Three reproducible defects were documented with supporting evidence:
 - **BUG-002** — Dynamic Catalog duplicate products
 - **BUG-003** — Reset App State UI state inconsistency
 
-Further testing remains planned as part of the broader QA strategy:
+The following testing phases have been completed or remain planned:
 
-- **Phase 3 — Exploratory Testing**
-- **Phase 4 — Compatibility / Responsive Testing**
+- **Phase 3 — Exploratory Testing:** Completed. See `Test-Execution/Exploratory-Test-Session-Report.md`.
+- **Phase 4 — Compatibility / Responsive Testing:** Pending.
 
-The results in this section represent **Phase 1 functional testing only**. Cross-browser testing results are documented separately in Section 10. Final project-level conclusions will be updated after the remaining testing phases are completed.
+The results in this section represent **Phase 1 functional testing only**. Cross-browser testing results are documented separately in Section 10. Exploratory testing findings are documented in the exploratory session report.
 
 ---
 
@@ -143,12 +145,12 @@ The results in this section represent **Phase 1 functional testing only**. Cross
 |---|---:|
 | Testing Phase | Phase 2 — Cross-Browser Testing |
 | Browsers Tested | 3 |
-| Cross-Browser Test Cases | 11 |
+| Cross-Browser Scenarios | 11 |
 | Total Browser-Level Executions | 33 |
-| Passed Test Cases | 9 |
-| Failed Test Cases | 2 |
-| Blocked Test Cases | 0 |
-| Not Executed | 0 |
+| Scenarios Passed in All Three Browsers | 9 |
+| Scenarios Failed in All Three Browsers | 2 |
+| Blocked Scenarios | 0 |
+| Not Executed Scenarios | 0 |
 
 Each of the 11 selected test scenarios was executed in Chrome, Edge, and Firefox, resulting in 33 browser-level executions. Nine scenarios passed in all three browsers, while two scenarios failed in all three. Individual browser results are recorded in the cross-browser test matrix.
 
@@ -209,3 +211,48 @@ Phase 2 cross-browser execution was completed for 11 selected scenarios across C
 BUG-002 and BUG-003 were reproduced in all three browsers. Additional browser and cart observations were documented separately without assigning unsupported defect classifications.
 
 Detailed browser-level results are available in `Test-Cases/Cross-Browser-Test-Matrix.xlsx`.
+
+---
+
+## 11. Phase 3 — Exploratory Test Execution
+
+**Session ID:** ET-SESSION-01  
+**Charter:** State, Navigation and Transaction Consistency  
+**Status:** Completed  
+**Planned Time-box:** 30 minutes  
+**Actual Duration:** Longer than the planned time-box; exact duration not recorded.
+
+Seven exploratory checks were performed to examine cart state, checkout navigation, form validation, order summary accuracy, and transaction consistency.
+
+### 11.1 Summary of Findings
+
+| Finding | Result |
+|---|---|
+| Cart state after navigation | No issue identified |
+| Changing cart contents | No issue identified |
+| Browser Back/Forward during checkout | Inconsistent behavior observed; unconfirmed |
+| Whitespace-only checkout fields | Failed — BUG-004 |
+| Order summary consistency | Passed |
+| Checkout validation boundaries | Failed — BUG-004 |
+| Cart and checkout consistency after changes | Passed |
+
+### 11.2 Defect Identified
+
+**BUG-004 — Checkout Accepts Whitespace-Only Required Fields**
+
+Whitespace-only values were accepted in required checkout fields, allowing the user to proceed to Order Overview. The generated order PDF displayed blank-looking values for the affected fields.
+
+**Defect Report:** `Bug-Reports/BUG-004.md`  
+**Evidence:** `Evidence/BUG-004/`
+
+### 11.3 Unconfirmed Observation
+
+Inconsistent Browser Back/Forward behavior was observed during checkout. Checkout fields appeared empty after navigating backward, and one attempt produced a page-specific authentication error when navigating forward. The behavior was not reproduced consistently and was not classified as a confirmed defect.
+
+### 11.4 Phase 3 Conclusion
+
+Phase 3 exploratory testing was completed. Seven checks were performed, and one confirmed defect, BUG-004, was documented. An additional navigation observation remains unconfirmed.
+
+Detailed steps, observations, and supporting evidence are recorded in `Test-Execution/Exploratory-Test-Session-Report.md`.
+
+Phase 4 — Compatibility / Responsive Testing remains pending.

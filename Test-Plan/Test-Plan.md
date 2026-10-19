@@ -207,16 +207,20 @@ Two existing defects were reproduced across all three browsers: BUG-002 (duplica
 
 ### Phase 3 — Exploratory Testing
 
-Exploratory testing will use structured exploratory charters covering areas such as navigation, application state, session behavior, repeated actions, refresh/back/forward behavior, and Dynamic Catalog behavior.
+One exploratory session has been completed using the charter **ET-SESSION-01 — State, Navigation and Transaction Consistency**.
 
-| Exploratory Area                           | Test Charters |
-| ------------------------------------------ | ------------: |
-| Navigation & Session                       |           TBD |
-| Application State                          |           TBD |
-| User Interaction / Repeated Actions        |           TBD |
-| Dynamic Catalog                            |           TBD |
-| Additional Areas Identified During Testing |           TBD |
-| **Phase 3 Total**                          |       **TBD** |
+Seven exploratory checks covered cart state, navigation, checkout form validation, order summary accuracy, and transaction consistency.
+
+| Metric | Result |
+|---|---|
+| Completed exploratory sessions | 1 |
+| Completed exploratory checks | 7 |
+| Confirmed defect identified | BUG-004 |
+| Additional unconfirmed observations | 1 |
+
+BUG-004 concerns acceptance of whitespace-only required checkout fields. An inconsistent Browser Back/Forward behavior was also observed but was not classified as a confirmed defect because it could not be reproduced consistently.
+
+Detailed findings are documented in `Test-Execution/Exploratory-Test-Session-Report.md`.
 
 ### Phase 4 — Compatibility / Responsive Testing
 
@@ -231,15 +235,14 @@ Responsive testing will evaluate the web application at selected viewport sizes 
 
 ### Overall Coverage
 
-| Phase                                | Planned Coverage |
-| ------------------------------------ | ---------------: |
-| Phase 1 — Functional                 |               39 |
-| Phase 2 — Cross-Browser              |              TBD |
-| Phase 3 — Exploratory                |              TBD |
-| Phase 4 — Compatibility / Responsive |              TBD |
-| **Overall Total**                    |          **TBD** |
+| Phase | Coverage | Status |
+|---|---|---|
+| Phase 1 — Functional | 39 formal test cases | Completed |
+| Phase 2 — Cross-Browser | 11 scenarios across 3 browsers; 33 browser-level executions | Completed |
+| Phase 3 — Exploratory | 1 charter; 7 exploratory checks | Completed |
+| Phase 4 — Compatibility / Responsive | Selected viewport sizes and workflows; detailed coverage pending | Pending |
 
-The Phase 2–4 counts will be finalized after the corresponding test cases, matrices, and exploratory charters are designed. Regression testing will use relevant existing test cases and newly identified scenarios rather than being treated as a separate duplicate test suite.
+The phase totals use different measurement units and should not be added together as a single test-case count. Regression testing uses relevant existing test cases and additional scenarios where required.
 
 ## 9. Entry Criteria
 
@@ -288,6 +291,7 @@ The project includes:
 * Cross-Browser Test Results
 * Defect Reports
 * Defect Evidence
+* Exploratory Test Session Report
 * Project README
 
 Additional test documentation may be added as the testing scope expands.
@@ -315,6 +319,7 @@ Three confirmed defects have been identified during the current testing cycle:
 | BUG-001   | Navigation & Session | Session expiration displays raw, page-specific authentication errors instead of graceful session handling | Medium   | Medium   |
 | BUG-002   | Dynamic Catalog      | Dynamic Catalog continuously generates duplicate products while scrolling                                 | Medium   | Medium   |
 | BUG-003   | Navigation & Session | Reset App State clears cart data but leaves stale Remove button state until page refresh                  | Medium   | Medium   |
+| BUG-004 | Checkout | Checkout accepts whitespace-only required fields | Medium | Medium |
 
 Additional defects may be identified during cross-browser, responsive, exploratory, or regression testing.
 
