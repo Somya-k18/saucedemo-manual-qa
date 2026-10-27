@@ -265,6 +265,7 @@ The Order Overview should reflect only the remaining product, with the correspon
 The cart and Order Overview matched after the product was removed.
 
 **Assessment:** Passed  
+
 **Defect ID:** None
 
 ## 5. Session Summary
@@ -286,8 +287,11 @@ The session covered seven exploratory checks. Four checks behaved as expected wi
 ### BUG-004 — Checkout Accepts Whitespace-Only Required Fields
 
 **Module:** Checkout  
-**Severity:** Medium  
-**Priority:** Medium  
+
+**Severity:** High
+
+**Priority:** Medium (Provisional)
+
 **Status:** Open
 
 The checkout form accepts whitespace-only values in required customer information fields and allows the user to proceed to the Order Overview.
